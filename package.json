@@ -47,7 +47,7 @@
     "laravel-mix": "^6.0.42",
     "laravel-mix-polyfill": "^3.0.1"
   },
-  "main": "dist/roles.js",
+  "main": "dist/vuex-roles.js",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
