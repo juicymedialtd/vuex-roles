@@ -78,21 +78,21 @@ export default {
      * Map Vuex getters and setters to $roles
      */
     Vue.prototype.$roles = {
-      getRoles: () => store.getters['permissions/getRoles'],
-      hasRole: (role) => store.getters['permissions/hasRole'](role),
-      hasAnyRole: (roles) => store.getters['permissions/hasAnyRole'](roles),
-      hasAllRoles: (roles) => store.getters['permissions/hasAllRoles'](roles),
+      getRoles: () => store.getters['roles/getRoles'],
+      hasRole: (role) => store.getters['roles/hasRole'](role),
+      hasAnyRole: (roles) => store.getters['roles/hasAnyRole'](roles),
+      hasAllRoles: (roles) => store.getters['roles/hasAllRoles'](roles),
 
-      getPermissions: () => store.getters['permissions/getPermissions'],
-      hasPermission: (permission) => store.getters['permissions/hasPermission'](permission),
-      hasAnyPermission: (permissions) => store.getters['permissions/hasAnyPermission'](permissions),
-      hasAllPermissions: (permissions) => store.getters['permissions/hasAllPermissions'](permissions),
+      getPermissions: () => store.getters['roles/getPermissions'],
+      hasPermission: (permission) => store.getters['roles/hasPermission'](permission),
+      hasAnyPermission: (permissions) => store.getters['roles/hasAnyPermission'](permissions),
+      hasAllPermissions: (permissions) => store.getters['roles/hasAllPermissions'](permissions),
 
-      setRoles: (roles) => store.dispatch('permissions/setRoles', roles),
-      setPermissions: (permissions) => store.dispatch('permissions/setPermissions', permissions),
+      setRoles: (roles) => store.dispatch('roles/setRoles', roles),
+      setPermissions: (permissions) => store.dispatch('roles/setPermissions', permissions),
 
-      addRole: (role) => store.dispatch('permissions/addRole', role),
-      addPermission: (permission) => store.dispatch('permissions/addPermission', permission),
+      addRole: (role) => store.dispatch('roles/addRole', role),
+      addPermission: (permission) => store.dispatch('roles/addPermission', permission),
     };
   },
 };

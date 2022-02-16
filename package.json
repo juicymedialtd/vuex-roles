@@ -1,6 +1,6 @@
 {
   "name": "@juicymedia/vuex-roles",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple Vuex plugin for managing user roles and permissions.",
   "scripts": {
     "development": "npm run generate:i18n && mix",
@@ -48,7 +48,7 @@
     "laravel-mix-polyfill": "^3.0.1",
     "laravel-mix-eslint": "^0.2.0"
   },
-  "main": "dist/vuex-roles.js",
+  "main": "src/vuex-roles.js",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
