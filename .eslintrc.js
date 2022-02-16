@@ -13,6 +13,11 @@ module.exports = {
     'plugin:jsdoc/recommended',
     'plugin:compat/recommended',
   ],
+  parserOptions: {
+    parser: '@babel/eslint-parser',
+    ecmaVersion: 2021,
+    sourceType: 'module',
+  },
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',

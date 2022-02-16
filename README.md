@@ -12,10 +12,10 @@ A simple Vuex plugin for managing user roles and permissions.
 // Import Vue and your Vuex store
 import Vue from 'vue'; 
 import store from './store';
-import Permissions from 'vuex-permissions';
+import Roles from 'vuex-roles';
 
 // Register the plugin, passing the store is required
-Vue.use(Permissions, { store });
+Vue.use(Roles, { store });
 
 // Create our Vue instance
 const app = new Vue({
@@ -24,8 +24,8 @@ const app = new Vue({
 });
 
 // Register some roles and permissions
-app.$permissions.setRoles(['admin']);
-app.$permissions.setPermissions(['users.create', 'users.delete']);
+app.$roles.setRoles(['admin']);
+app.$roles.setPermissions(['users.create', 'users.delete']);
 ```
 
 #### Directives

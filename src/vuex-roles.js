@@ -1,4 +1,4 @@
-import permissionsModule from './store/permissions';
+import rolesModule from './store/roles';
 
 /**
  * Remove an element from the DOM in a Vue-compatible way
@@ -36,25 +36,7 @@ export default {
     }
 
     // Register the module with the store
-    store.registerModule('permissions', permissionsModule);
-
-    /**
-     * Add v-permission directive
-     *
-     * Removes an element if the user doesn't have the specified permissions
-     */
-    Vue.directive('permission', {
-      update(el, permissions, vnode) {
-        if (permissions.value) {
-          const permissionsArray = permissions.value.split('|');
-          if (!Vue.prototype.$permissions.hasAnyPermission(permissionsArray)) {
-            removeElement(el, vnode);
-          }
-        } else {
-          throw new Error('Please specify a permission');
-        }
-      },
-    });
+    store.registerModule('roles', rolesModule);
 
     /**
      * Add v-role directive
@@ -65,7 +47,7 @@ export default {
       update(el, roles, vnode) {
         if (roles.value) {
           const rolesArray = roles.value.split('|');
-          if (!Vue.prototype.$permissions.hasAnyRole(rolesArray)) {
+          if (!Vue.prototype.$roles.hasAnyRole(rolesArray)) {
             removeElement(el, vnode);
           }
         } else {
@@ -75,9 +57,27 @@ export default {
     });
 
     /**
-     * Map Vuex getters and setters to $permissions
+     * Add v-permission directive
+     *
+     * Removes an element if the user doesn't have the specified permissions
      */
-    Vue.prototype.$permissions = {
+    Vue.directive('permission', {
+      update(el, permissions, vnode) {
+        if (permissions.value) {
+          const permissionsArray = permissions.value.split('|');
+          if (!Vue.prototype.$roles.hasAnyPermission(permissionsArray)) {
+            removeElement(el, vnode);
+          }
+        } else {
+          throw new Error('Please specify a permission');
+        }
+      },
+    });
+
+    /**
+     * Map Vuex getters and setters to $roles
+     */
+    Vue.prototype.$roles = {
       getRoles: () => store.getters['permissions/getRoles'],
       hasRole: (role) => store.getters['permissions/hasRole'](role),
       hasAnyRole: (roles) => store.getters['permissions/hasAnyRole'](roles),

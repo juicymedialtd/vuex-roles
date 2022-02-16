@@ -1,3 +1,5 @@
 .eslintrc.js
 .editorconfig
 .husky
+.idea
+!dist/
