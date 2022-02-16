@@ -23,4 +23,4 @@ mix
 /**
  * Compile our main JS file
  */
-mix.js('src/vuex-roles.js', 'dist/');
+mix.babel('src/vuex-roles.js', 'dist/vuex-roles.js');
