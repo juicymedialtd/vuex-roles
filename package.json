@@ -1,6 +1,6 @@
 {
   "name": "@juicymedia/vuex-roles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple Vuex plugin for managing user roles and permissions.",
   "scripts": {
     "development": "npm run generate:i18n && mix",
