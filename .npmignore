@@ -3,3 +3,5 @@
 .husky
 .idea
 !dist/
+.babelrc
+.eslintcache
