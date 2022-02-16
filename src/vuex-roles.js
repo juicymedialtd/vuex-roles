@@ -42,36 +42,50 @@ export default {
      * Add v-role directive
      *
      * Removes an element if the user doesn't have the specified roles
+     *
+     * @param el
+     * @param roles
+     * @param vnode
      */
-    Vue.directive('role', {
-      update(el, roles, vnode) {
-        if (roles.value) {
-          const rolesArray = roles.value.split('|');
-          if (!Vue.prototype.$roles.hasAnyRole(rolesArray)) {
-            removeElement(el, vnode);
-          }
-        } else {
-          throw new Error('Please specify a role');
+    function roleDirective(el, roles, vnode) {
+      if (roles.value) {
+        const rolesArray = roles.value.split('|');
+        if (!Vue.prototype.$roles.hasAnyRole(rolesArray)) {
+          removeElement(el, vnode);
         }
-      },
+      } else {
+        throw new Error('Please specify a role');
+      }
+    }
+
+    Vue.directive('role', {
+      inserted: (el, roles, vnode) => roleDirective(el, roles, vnode),
+      update: (el, roles, vnode) => roleDirective(el, roles, vnode),
     });
 
     /**
      * Add v-permission directive
      *
      * Removes an element if the user doesn't have the specified permissions
+     *
+     * @param el
+     * @param permissions
+     * @param vnode
      */
-    Vue.directive('permission', {
-      update(el, permissions, vnode) {
-        if (permissions.value) {
-          const permissionsArray = permissions.value.split('|');
-          if (!Vue.prototype.$roles.hasAnyPermission(permissionsArray)) {
-            removeElement(el, vnode);
-          }
-        } else {
-          throw new Error('Please specify a permission');
+    function permissionDirective(el, permissions, vnode) {
+      if (permissions.value) {
+        const permissionsArray = permissions.value.split('|');
+        if (!Vue.prototype.$roles.hasAnyPermission(permissionsArray)) {
+          removeElement(el, vnode);
         }
-      },
+      } else {
+        throw new Error('Please specify a permission');
+      }
+    }
+
+    Vue.directive('permission', {
+      inserted: (el, roles, vnode) => permissionDirective(el, roles, vnode),
+      update: (el, roles, vnode) => permissionDirective(el, roles, vnode),
     });
 
     /**
